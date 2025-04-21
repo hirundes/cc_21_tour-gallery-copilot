@@ -37,11 +37,22 @@ const App = () => {
   return (
     <div>
       <h1>Tours</h1>
-      <ul>
-        {tours.map((tour) => (
-          <li key={tour.id}>{tour.name}</li>
-        ))}
-      </ul>
+      <Gallery tours={tours} />
+    </div>
+  );
+};
+
+const Gallery = ({ tours }) => {
+  return (
+    <div className="gallery">
+      {tours.map((tour) => (
+        <div key={tour.id} className="gallery-item">
+          <img src={tour.image} alt={tour.name} />
+          <h3>{tour.name}</h3>
+          <p>{tour.info}</p>
+          <p>Price: ${tour.price}</p>
+        </div>
+      ))}
     </div>
   );
 };
