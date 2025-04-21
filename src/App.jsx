@@ -45,11 +45,18 @@ const App = () => {
   return (
     <div>
       <h1>Tours</h1>
-      <div className="gallery">
-        {tours.map((tour) => (
-          <TourCard key={tour.id} tour={tour} onRemove={removeTour} />
-        ))}
-      </div>
+      {tours.length === 0 ? (
+        <div>
+          <h2>No tours left</h2>
+          <button onClick={() => window.location.reload()}>Refresh</button>
+        </div>
+      ) : (
+        <div className="gallery">
+          {tours.map((tour) => (
+            <TourCard key={tour.id} tour={tour} onRemove={removeTour} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
